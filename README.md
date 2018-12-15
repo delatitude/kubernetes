@@ -1,4 +1,4 @@
-# kubernetes
+# Kubernetes
 Installation of Kubernetes and adding new cluster
 
 # Cookbook-Install-Kubernetes-on-Ubuntu-18.04-kubeadm
