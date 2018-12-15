@@ -29,8 +29,8 @@ sudo swapoff -a
 #### Only on Master Node ####
 
 #Activate Cidr  
-`sudo kubeadm init — pod-network-cidr=10.168.0.0/16 — apiserver-advertise-address=(master node IP ADDRESS)
-`
+`sudo kubeadm init — pod-network-cidr=10.168.0.0/16 — apiserver-advertise-address=(master node IP ADDRESS)`
+  
 #Install Flannel  
 ```sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
@@ -39,11 +39,11 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 #Waiting till running all  
-`kubectl get pods — all-namespaces  
-`
+`kubectl get pods — all-namespaces`  
+
 #Master Isolation  
-`kubectl taint nodes — all node-role.kubernetes.io/master-  
-`
+`kubectl taint nodes — all node-role.kubernetes.io/master-`  
+
 #Install Dashborad  
 ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml  
 kubectl get pods — all-namespaces  
@@ -53,9 +53,10 @@ kubectl create serviceaccount dashboard -n default
 kubectl create clusterrolebinding dashboard-admin -n default — clusterrole=cluster-admin — serviceaccount=default:dashboard  
 kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath=”{.secrets[0].name}”) -o jsonpath=”{.data.token}” | base64 — decode  
 ```
+
 #### Join worker node (Only on Worker Nodes) ####
-```kubeadm join (Master node IP):6443 — token ua7joh.huzyhi8m0si1la7v — discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
-```
+`kubeadm join (Master node IP):6443 — token ua7joh.huzyhi8m0si1la7v — discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+`  
 
 #### Tear down ####
 ```kubectl drain (Node Name) — delete-local-data — forcee — ignore-daemonsets  
