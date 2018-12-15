@@ -63,4 +63,6 @@ kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath=”{.secre
 kubectl delete node (Node Name)  
 
 sudo kubeadm reset  
-```
+```  
+
+[Original Source on Medium Nattawin](https://medium.com/@iambeboy/install-kubernetes-on-ubuntu-18-04-with-kubeadm-bf0f6b7ff3d4)
